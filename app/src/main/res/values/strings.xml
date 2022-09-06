@@ -11,6 +11,12 @@
     <string name="true_button">True</string>
     <string name="false_button">False</string>
     <string name="next_button">Next</string>
+<!--    Chp. 2 Challenge: Add a Previous Button-->
+    <string name="prev_button">Prev</string>
+
+<!--    Chp. 2 Challenge: From Button to ImageButton-->
+    <string name="prev_contentId">Previous</string>
+    <string name="next_contentId">Next</string>
 
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
