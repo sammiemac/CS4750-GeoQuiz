@@ -20,4 +20,6 @@
 
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
+
+    <string name="already_answered_toast">Already answered!</string>
 </resources>

@@ -21,15 +21,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var questionTextView: TextView
 
     private val questionBank = listOf(
-        Question(R.string.question_australia, true),
-        Question(R.string.question_oceans, true),
-        Question(R.string.question_mideast, false),
-        Question(R.string.question_africa, false),
-        Question(R.string.question_americas, true),
-        Question(R.string.question_asia, true)
+        Question(R.string.question_australia, true, false),
+        Question(R.string.question_oceans, true, false),
+        Question(R.string.question_mideast, false, false),
+        Question(R.string.question_africa, false, false),
+        Question(R.string.question_americas, true, false),
+        Question(R.string.question_asia, true, false)
     )
 
     private var currentIndex = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,12 +45,22 @@ class MainActivity : AppCompatActivity() {
         questionTextView = findViewById(R.id.question_text_view)
 
         trueButton.setOnClickListener { view: View ->
-            checkAnswer(true)
+            //Chp. 3 Challenge: Preventing Repeat Answers
+            if (!questionBank[currentIndex].repeat) {
+                checkAnswer(true)
+            } else {
+                alreadyAnswered()
+            }
 
         }
 
         falseButton.setOnClickListener { view: View ->
-            checkAnswer(false)
+            //Chp. 3 Challenge: Preventing Repeat Answers
+            if (!questionBank[currentIndex].repeat) {
+                checkAnswer(false)
+            } else {
+                alreadyAnswered()
+            }
         }
 
         nextButton.setOnClickListener {
@@ -109,6 +120,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkAnswer(userAnswer: Boolean) {
         val correctAnswer = questionBank[currentIndex].answer
+        //Chp. 3 Challenge: Preventing Repeat Answers
+        questionBank[currentIndex].repeat = true
 
         val messageResId = if (userAnswer == correctAnswer) {
             R.string.correct_toast
@@ -116,10 +129,15 @@ class MainActivity : AppCompatActivity() {
             R.string.incorrect_toast
         }
 
+        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT)
+            .show()
+    }
+
+    //Chp. 3 Challenge: Preventing Repeat Answers
+    private fun alreadyAnswered() {
+        val messageResId = R.string.already_answered_toast
         Toast.makeText(this,messageResId, Toast.LENGTH_SHORT)
             .show()
     }
 
 }
-
-// Test
