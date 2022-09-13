@@ -105,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         if (resultCode != Activity.RESULT_OK) {
             return
         }
-        if (resultCode == REQUEST_CODE_CHEAT) {
+        if (requestCode == REQUEST_CODE_CHEAT) {
             quizViewModel.isCheater =
                 data?.getBooleanExtra(EXTRA_ANSWER_SHOWN, false) ?: false
         }
