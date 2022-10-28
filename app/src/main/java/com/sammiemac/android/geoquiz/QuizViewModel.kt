@@ -47,8 +47,8 @@ class QuizViewModel : ViewModel() {
         questionBank[currentIndex].repeat = true
     }
 
-    //Chp. 3 Challenge: Preventing Repeat Answers
     fun setRepeat(repeat: Boolean) {
         questionBank[currentIndex].repeat = repeat
     }
+
 }
